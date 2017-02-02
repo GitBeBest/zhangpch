@@ -274,3 +274,14 @@
 .closet-cate p{
     color: #007aff;
 }
+
+.weibo-details{
+    width: 100%;
+    overflow: hidden;
+    margin-bottom: 30px;
+}
+
+.weibo{
+    width: 100%;
+    height: 500px;
+}
