@@ -1,0 +1,219 @@
+.container{
+    width: 100%;
+    max-width: 1200px;
+    min-width: 320px;
+    margin: auto;
+    padding-top: 100px;
+}
+
+.article-list{
+    float: left;
+    width: 65%;
+}
+
+.body-right{
+    float: right;
+    width : 32%;
+}
+
+.latest-title{
+    color: #2e6da4;
+    font-size: 14px;
+    font-weight: normal;
+}
+
+.latest-title small {
+    margin-left: 5px;
+    font-size: 12px;
+}
+
+.latest-list{
+    width: 100%;
+    margin-top: 10px;
+}
+
+.latest-list>ul>li{
+    width: 100%;
+    padding: 25px;
+    border: 1px solid rgba(0,0,0,0);
+    box-sizing: border-box;
+    margin-bottom: 25px;
+    overflow: hidden;
+    position: relative;
+    background: rgba(255,255,255,0.5);
+    transition: all 0.5s;
+    -webkit-transition: all 0.5s;
+}
+
+.art-img{
+    width: 25%;
+    height: 105px;
+    float: left;
+    overflow: hidden;
+}
+
+.art-img img{
+    width: 100%;
+    height: 100%;
+    transition: all 0.5s;
+    -webkit-transition: all 0.5s;
+}
+
+.art-content{
+    width: 71%;
+    float: right;
+    position: relative;
+}
+
+.latest-list .hot{
+    background: rgba(255,255,255,0.5) url(../../../assets/images/hot.gif) no-repeat 98% 8px;
+}
+.art-content ul li{
+    float: left;
+    overflow: hidden;
+    padding: 0 5px;
+    font-size: 12px;
+    color: #888;
+    max-width: 150px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.art-content ul li:last-child {
+    float: right;
+}
+
+.art-content h4{
+    margin: 0;
+    background: none;
+    font-size: 18px;
+    padding-bottom: 11px;
+    text-indent: 0;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.art-content p{
+    font-size: 13px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    height: 54px;
+    color: #515151;
+}
+
+.body-right{
+    width: 32%;
+    float: right;
+}
+
+.follow-me{
+    width: 100%;
+    margin-bottom: 30px;
+    position: relative;
+}
+
+.follow-me-title{
+    color: #2e6da4;
+    font-size: 14px;
+    font-weight: normal;
+}
+
+.follow-ways{
+    width: 100%;
+    overflow: hidden;
+}
+
+.follow-ways li{
+    float: left;
+}
+
+.follow-ways li span{
+    display: block;
+    width: 100%;
+    padding-top: 10px;
+    color: #777;
+}
+
+.follow-way-item{
+    display: block;
+    font-size: 14px;
+    overflow: hidden;
+    width: 33%;
+    text-align: center;
+    margin-bottom: 20px;
+    padding-top: 10px;
+    color: #fff;
+}
+
+.follow-way-item a{
+    overflow: hidden;
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    margin: auto;
+    border-radius: 100px;
+    -webkit-border-radius: 100px;
+    transition: all 0.5s;
+    -webkit-transition: all 0.5s;
+    padding: 0;
+}
+
+.follow-way-item .by-weibo{
+    border: 1px solid #c9302c;
+}
+
+.follow-way-item .by-github{
+    border: 1px solid #a2a2a2;
+}
+.follow-way-item .by-mail{
+    border: 1px solid #0af5aa;
+}
+
+.follow-way-item a i{
+    line-height: 50px;
+    font-size: 20px;
+    margin: 0;
+}
+
+.author-info{
+    width: 100%;
+    text-align: center;
+    padding: 0 5px 0 5px;
+    margin-top: 60px;
+}
+
+.author-tx{
+    width: 100%;
+    position: relative;
+}
+
+.author-tx a{
+    border: 5px solid #fff;
+    box-shadow: 0 1px 5px #666;
+    width: 60px;
+    height: 60px;
+    display: block;
+    overflow: hidden;
+    position: absolute;
+    top: -30px;
+    left: 0;
+    right: 0;
+    margin: auto;
+    transition: all 0.8s;
+    -webkit-transition: all 0.8s;
+}
+.author-bg-img{
+    border-radius: 100px;
+    -webkit-border-radius: 100px;
+    -moz-border-radius: 100px;
+}
+
+.author-bg-img img{
+    width: 100%;
+    height: 100%;
+}
+
+.author-name{
+    padding-top: 45px;
+}

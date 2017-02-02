@@ -1,0 +1,146 @@
+.bl-header{
+    width: 100%;
+    height: 70px;
+    background: rgba(255, 255, 255, 0.85);
+    box-shadow: 0 0 2px #13c5f8;
+    position: fixed;
+    z-index: 10;
+}
+
+.bl-header-top{
+    width: 100%;
+    max-width: 1200px;
+    margin: auto;
+    height: 100%;
+    position: relative;
+}
+
+.bl-header-top-left{
+    float: left;
+    width : 40%;
+}
+
+.bl-header-pc-nav{
+    float: left;
+    width: 60%;
+    height: 100%;
+    position: relative;
+}
+
+.bl-header-logo{
+    float: left;
+    width: 33%;
+}
+
+.bl-header-logo img{
+    width : 90%;
+    padding-top: 0.2em;
+}
+
+.bl-header-tip{
+    float: left;
+    width: 66%;
+    margin-top: 25px;
+    font-size: 12px;
+    position: relative;
+}
+
+.bl-header-tip ul{
+    list-style: none;
+    margin-top: 0px;
+    padding: 0;
+}
+
+.bl-header-tip i{
+    position: absolute;
+    left: 0;
+    top: 6px;
+    color: inherit;
+}
+
+.bl-header-message{
+    height: 25px;
+    margin-left: 20px;
+    overflow: hidden;
+}
+
+.bl-header-message li{
+    line-height: 25px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.bl-header-pc-nav ul{
+    list-style: none;
+    color: #ff6700
+}
+
+.bl-header-cate{
+    width: 100%;
+    height: 100%;
+    margin: 0;
+}
+
+.bl-header-pc-nav ul li{
+    float: left;
+    text-align: center;
+    font-size: 16px;
+    height: 100%;
+    position: relative;
+}
+
+.nav-active{
+    background-color: #00a2ff;
+}
+
+.drop-nav {
+    position: absolute;
+    width: 150px;
+    border: 1px solid #ddd;
+    top: 70px;
+    box-sizing: border-box;
+    border-top: none;
+    display: none;
+    background: rgba(255,255,255,0.9);
+    box-shadow: 2px 2px 8px #ccc;
+}
+
+.drop-nav li{
+    display: list-item;
+    padding: 10px 0;
+    width: 100%;
+    height: 100%;
+    color: inherit;
+    font-size: 14px;
+    text-align: center;
+    border-bottom: 1px dotted #ddd;
+    box-sizing: border-box;
+    transition: all 0.2s;
+    -webkit-transition: all 0.2s;
+}
+
+.drop-nav li a {
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    color: #ff6700!important;
+}
+
+.bl-header-cate-li{
+    width: 14.25%;
+    height: 100%;
+}
+
+.bl-header-pc-nav> ul >li >a {
+    display: inline-block;
+    width: 100%;
+    height: 70px;
+    line-height: 70px;
+    color: #ff6700;
+    transition: all 0.2s;
+    -webkit-transition: all 0.2s;
+}
+
+.fa-angle-down{
+    margin-left: 10px;
+}
