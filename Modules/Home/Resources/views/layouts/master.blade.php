@@ -13,4 +13,5 @@
 		@yield('header')
 		@yield('content')
 	</body>
+	@include('home::layouts.footer')
 </html>

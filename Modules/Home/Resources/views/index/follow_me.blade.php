@@ -12,7 +12,7 @@
                 <span>新浪微博</span>
             </li>
             <li class="follow-way-item">
-                <a class="by-github" href="http://github.com/u/GitBeBest" target="_blank">
+                <a class="by-github" href="http://github.com/GitBeBest" target="_blank">
                     <i class="fa fa-github" aria-hidden="true"></i>
                 </a>
                 <span>GitHub</span>

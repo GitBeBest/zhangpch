@@ -9,6 +9,19 @@
         <p>技术爱好者</p>
     </div>
     <div class="web-data">
-
+        <ul>
+            <li>
+                <strong>410</strong>
+                <span>运行天数</span>
+            </li>
+            <li>
+                <strong>410</strong>
+                <span>今日访问ip</span>
+            </li>
+            <li>
+                <strong>410</strong>
+                <span>今日访客</span>
+            </li>
+        </ul>
     </div>
 </div>

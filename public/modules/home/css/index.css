@@ -179,8 +179,9 @@
 .author-info{
     width: 100%;
     text-align: center;
-    padding: 0 5px 0 5px;
+    padding: 0 5px 15px 5px;
     margin-top: 60px;
+    margin-bottom: 30px;
 }
 
 .author-tx{
@@ -216,4 +217,60 @@
 
 .author-name{
     padding-top: 45px;
+}
+
+.author-name p{
+    font-size: 12px;
+    color: #a2a2a2;
+}
+
+.web-data ul{
+    margin-top: 15px;
+    overflow: hidden;
+}
+
+.web-data ul li {
+    width: 33%;
+    float: left;
+    box-sizing: border-box;
+    text-align: center;
+    border-right: 1px solid #ccc;
+}
+
+.web-data ul li strong {
+    display: block;
+    font-weight: bold;
+    line-height: 18px;
+    overflow: hidden;
+}
+
+.web-data ul li span {
+    display: block;
+    font-size: 12px;
+    color: #555;
+}
+
+.closet-new{
+    padding-bottom: 15px;
+    margin-bottom: 30px;
+}
+
+.closet-new-title{
+    color: #2e6da4;
+    font-size: 14px;
+    font-weight: normal;
+}
+
+.closet-cate ul{
+    width: 95%;
+    margin: auto;
+}
+
+.closet-cate li{
+    padding: 8px 0;
+    font-size: 13px;
+}
+
+.closet-cate p{
+    color: #007aff;
 }

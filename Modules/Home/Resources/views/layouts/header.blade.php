@@ -35,10 +35,10 @@
                             </ul>
                         </div>
                     </li>
-                    <li class="bl-header-cate-li"><a href="/" title="">相册</a></li>
-                    <li class="bl-header-cate-li"><a href="/" title="">素材</a></li>
-                    <li class="bl-header-cate-li"><a href="/">留言</a>	</li>
-                    <li class="bl-header-cate-li"><a href="/">关于</a></li>
+                    <li class="bl-header-cate-li"><a href="/home/photo" title="">相册</a></li>
+                    <li class="bl-header-cate-li"><a href="/home/resource" title="">素材</a></li>
+                    <li class="bl-header-cate-li"><a href="/home">留言</a>	</li>
+                    <li class="bl-header-cate-li"><a href="/home/about">关于</a></li>
                 </ul>
             </nav>
         </div>
