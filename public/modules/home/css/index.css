@@ -6,6 +6,7 @@
     padding-top: 100px;
 }
 
+
 .article-list{
     float: left;
     width: 65%;
@@ -14,6 +15,14 @@
 .body-right{
     float: right;
     width : 32%;
+}
+
+@media screen and (max-width: 1023px) and (min-width: 320px){
+    .article-list, .body-right{
+        width: 95%;
+        float: none;
+        margin: auto;
+    }
 }
 
 .latest-title{
@@ -102,9 +111,37 @@
     color: #515151;
 }
 
-.body-right{
-    width: 32%;
-    float: right;
+
+.article-page{
+    width: 100%;
+    margin: 20px 0;
+    font-size: 12px;
+    overflow: hidden;
+}
+.article-page ul{
+    width: 95%;
+}
+
+.article-page ul li{
+    float: left;
+    padding: 8px 16px;
+    margin: 0 5px;
+    display: inline-block;
+    color: #008CBA;
+    border-radius: 5px;
+}
+
+@media screen and (max-width: 460px){
+    .article-page ul li{
+        padding: 0;
+    }
+}
+
+.article-page .current{
+    background-color: #008CBA;
+    color: #FFF;
+    border-radius: 5px;
+    border: 1px solid #008CBA;
 }
 
 .follow-me{
@@ -275,7 +312,7 @@
     color: #007aff;
 }
 
-.weibo-details{
+.weibo-details, .top-part{
     width: 100%;
     overflow: hidden;
     margin-bottom: 30px;
@@ -284,4 +321,67 @@
 .weibo{
     width: 100%;
     height: 500px;
+}
+
+.top-part ul{
+    margin: auto;
+    width: 95%;
+}
+
+.top-part .article-top-ul li {
+    padding: 8px 0;
+    border-bottom: 1px dotted #777;
+}
+
+.article-top-ul li {
+    width: 100%;
+    padding: 15px 0;
+    overflow: hidden;
+    position: relative;
+}
+
+.article-top-ul li:nth-of-type(1) span:before {
+    content: '1';
+    background: red;
+    color: #000000;
+}
+
+.article-top-ul li:nth-of-type(2) span:before {
+    content: '2';
+    background: orange;
+    color: #000000;
+}
+
+.article-top-ul li:nth-of-type(3) span:before {
+    content: '3';
+    background: yellow;
+    color: #000000;
+}
+
+.article-top-ul li:nth-of-type(4) span:before {
+    content: '4';
+    background: green;
+    color: #000000;
+}
+
+.article-top-ul li:nth-of-type(5) span:before {
+    content: '5';
+    background: blue;
+    color: #000000;
+}
+
+.article-top-ul li span:before {
+    display: inline-block;
+    width: 20px;
+    height: 23px;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    text-align: center;
+    font-size: 12px;
+    margin-right: 10px;
+}
+
+.article-top-ul li a {
+    font-size: 13px;
+    color: #008CBA;
 }

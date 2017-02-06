@@ -27,6 +27,18 @@
     position: relative;
 }
 
+@media screen and (max-width: 1023px) and (min-width: 320px){
+    .bl-header-top-left, .bl-header-pc-nav{
+        width: 95%;
+        float: none;
+        margin: auto;
+    }
+
+    .bl-header-pc-nav{
+        display: none;
+    }
+}
+
 .bl-header-logo{
     float: left;
     width: 33%;
@@ -127,7 +139,7 @@
 }
 
 .bl-header-cate-li{
-    width: 14.25%;
+    width: 12.5%;
     height: 100%;
 }
 
