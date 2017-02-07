@@ -31,13 +31,6 @@ class ArticleController extends Controller {
     }
 
     /***********************API接口********************************************/
-     /**
-     * 获取文章
-     */
-	public function lists(){
-	    $data = Article::all();
-        return $this->JsonOutPut($data);
-    }
 
     /**
      * 获取文章详情
@@ -49,6 +42,7 @@ class ArticleController extends Controller {
         return view('home::article', ['article' => $data]);
     }
 
+
     /**
      * 添加文章
      */
@@ -58,13 +52,15 @@ class ArticleController extends Controller {
         $content = Input::get('content');
         $category = Input::get('category');
         $link_img = Input::get('link_img');
+        $status = Input::get('status');
 
         $data = [
             'title' => $title,
             'resume' => $resume,
             'content' => $content,
             'category' => $category,
-            'link_img' => $link_img
+            'link_img' => $link_img,
+            'status' => $status
         ];
         $model = Article::create($data);
 

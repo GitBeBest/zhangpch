@@ -23,17 +23,7 @@ class Authenticate
             if ($request->ajax() || $request->wantsJson()) {
                 return response('Unauthorized.', 401);
             } else {
-                $open_id = Cookie::get('openid');
-                if($open_id) {
-                    $user = \DB::table('user')->where('openid', $open_id)->first();
-                    if(empty($user)) {
-                        return redirect()->guest('login');
-                    }
-                    return $next($request);
-                } else {
-                    
-                }
-
+                return redirect()->guest('auth/login');
             }
         }
 

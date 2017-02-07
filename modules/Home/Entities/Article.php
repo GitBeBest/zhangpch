@@ -8,6 +8,6 @@ class Article extends Model {
 
     protected $table = 'zpc_article';
 
-    protected $fillable = ['title', 'resume', 'content', 'category', 'view_times', 'praise_times', 'hate_times', 'link_img'];
+    protected $fillable = ['title', 'resume', 'content', 'category', 'view_times', 'praise_times', 'hate_times', 'link_img', 'status'];
     protected $dates = ['deleted_at'];
 }
