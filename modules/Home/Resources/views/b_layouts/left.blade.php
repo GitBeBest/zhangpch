@@ -1,4 +1,8 @@
 <div class="admin-left">
+    <div class="user_info">
+        <h4 class="user-name">{{ $user->name }}</h4>
+        <h4><a href="/logout">退出登陆</a></h4>
+    </div>
     <div>
         <ul>
             @if($current == 1)

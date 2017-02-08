@@ -53,7 +53,7 @@
     <body>
         <div class="container">
             <div class="content">
-                <form method="POST" action="/auth/login">
+                <form method="POST" action="/login">
                     {!! csrf_field() !!}
 
                     <div>
@@ -68,7 +68,7 @@
 
                     <div>
                         <input type="checkbox" name="remember"> Remember Me
-                        <a href="/auth/register">新注册用户</a>
+                        <a href="/register">新注册用户</a>
                     </div>
 
                     <div>

@@ -1,6 +1,6 @@
 <?php
 
-Route::group(['namespace' => 'Modules\Home\Http\Controllers'], function()
+Route::group(['middleware' => 'web', 'namespace' => 'Modules\Home\Http\Controllers'], function()
 {
 	Route::get('/', 'HomeController@index');
 	Route::get('/index', 'HomeController@index');
@@ -9,7 +9,7 @@ Route::group(['namespace' => 'Modules\Home\Http\Controllers'], function()
 	Route::get('/article/detail/{id}', 'ArticleController@detail')->where('id', '[0-9]+');
 });
 
-Route::group(['middleware'=> 'auth', 'prefix' => 'admin', 'namespace' => 'Modules\Home\Http\Controllers'], function()
+Route::group(['middleware' => 'web', 'prefix' => 'admin', 'namespace' => 'Modules\Home\Http\Controllers'], function()
 {
     Route::get('/', 'AdminController@index');
     Route::get('/{id}', 'AdminController@index')->where('id', '[0-9]');

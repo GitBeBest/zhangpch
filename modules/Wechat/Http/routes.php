@@ -7,4 +7,4 @@ Route::group(['prefix' => 'wechat', 'namespace' => 'Modules\Wechat\Http\Controll
 });
 
 
-Route::get('login', 'Modules\Wechat\Http\Controllers\LoginController@login');
+Route::get('wechat/login', 'Modules\Wechat\Http\Controllers\LoginController@login');
