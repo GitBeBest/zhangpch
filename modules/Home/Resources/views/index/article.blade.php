@@ -8,49 +8,51 @@
     </h4>
     <div class="latest-list">
         <ul>
-            <li class="hot">
-                <div class="art-img">
-                    <img src="../modules/home/images/wx.png" alt="">
-                </div>
-                <div class="art-content">
-                    <h4 class="text-blue">
-                        <a href="" title="个人网站微信授权登录功能怎么开发？">个人网站微信授权登录功能怎么开发？</a>
-                    </h4>
-                    <p>当你们在浏览这篇文章的时候，我是非常忐忑的，因为我不知道这篇文章是否对你有所帮助，但是我希望你能通过这篇文章更深刻的认识的微信授权登录</p>
-                    <ul>
-                        <li>
-                            <a title="zpc2017-02-01发表">
-                                <i class="fa fa-clock-o" aria-hidden="true"></i>
-                                2017-02-01
-                            </a>
-                        </li>
-                        <li>
-                            <a title="作者:zpc">
-                                <i class="fa fa-user-circle" aria-hidden="true"></i>
-                                zpc
-                            </a>
-                        </li>
-                        <li>
-                            <a title="已有0条评论">
-                                <i class="fa fa-comment" aria-hidden="true"></i>
-                                0
-                            </a>
-                        </li>
-                        <li>
-                            <a title="已有15次浏览">
-                                <i class="fa fa-eye" aria-hidden="true"></i>
-                                15
-                            </a>
-                        </li>
-                        <li>
-                            <a title="查看分类">
-                                <i class="fa fa-th-list" aria-hidden="true"></i>
-                                程序人生
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </li>
+            @foreach ($article as $item)
+                <li class="{{ $item->view_times > 200 ? 'hot' : '' }}" item_id="{{ $item->id }}">
+                    <div class="art-img">
+                        <img src="../modules/home/images/wx.png" alt="">
+                    </div>
+                    <div class="art-content">
+                        <h4 class="text-blue">
+                            <a href="/article/detail/{{$item->id}}" title="{{ $item->title }}">{{ $item->title }}</a>
+                        </h4>
+                        <p>{{ $item->resume}}</p>
+                        <ul>
+                            <li>
+                                <a title="{{$item->author }}{{ $item->created_at }}发表">
+                                    <i class="fa fa-clock-o" aria-hidden="true"></i>
+                                    {{ $item->created_at }}
+                                </a>
+                            </li>
+                            <li>
+                                <a title="作者:{{ $item->author }}">
+                                    <i class="fa fa-user-circle" aria-hidden="true"></i>
+                                    {{ $item->author }}
+                                </a>
+                            </li>
+                            <li>
+                                <a title="已有0条评论">
+                                    <i class="fa fa-comment" aria-hidden="true"></i>
+                                    0
+                                </a>
+                            </li>
+                            <li>
+                                <a title="已有{{ $item->view_times }}次浏览">
+                                    <i class="fa fa-eye" aria-hidden="true"></i>
+                                    {{ $item->view_times }}
+                                </a>
+                            </li>
+                            <li>
+                                <a title="查看分类">
+                                    <i class="fa fa-th-list" aria-hidden="true"></i>
+                                    {{ $item->category }}
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+            @endforeach
         </ul>
     </div>
     <div class="article-page">

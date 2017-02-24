@@ -4,7 +4,7 @@
             <div class="bl-header-top-left">
                 <div class="bl-header-logo">
                     <a href="/">
-                        <img src="../modules/home/images/logo.gif">
+                        <img src="/modules/home/images/logo.gif">
                     </a>
                 </div>
                 <div class="bl-header-tip">
