@@ -5,10 +5,10 @@ use Modules\Home\Service\ArticleService;
 
 class HomeController extends Controller {
 	
-	public function index()
+	public function index($page = 1)
 	{
-	    $result = ArticleService::instance()->getPublishLists(1);
-		return view('home::index', $result);
+	    $result = ArticleService::instance()->getPublishLists($page);
+		return view('home::index', ['article' => $result]);
 	}
 	
 }

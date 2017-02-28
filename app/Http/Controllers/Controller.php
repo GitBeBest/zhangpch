@@ -17,7 +17,7 @@ class Controller extends BaseController
         $out['status'] = $status;
         $out['errMsg'] = $message;
         $out['errCode'] = $code;
-        $out['data'] = $data;
+        $out['result'] = $data;
         return JsonResponse::create($out);
     }
 }

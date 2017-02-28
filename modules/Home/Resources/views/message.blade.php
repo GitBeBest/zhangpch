@@ -5,7 +5,7 @@
 </head>
 @section('content')
     <div class="container">
-        @include('home::index.article')
+        @include('home::message.index')
         @include('home::index.right')
     </div>
 @stop

@@ -8,7 +8,7 @@
 		<link rel="stylesheet" type="text/css" href="/modules/home/css/font-awesome.css">
 		<link rel="stylesheet" type="text/css" href="/modules/home/css/public.css">
         <link rel="stylesheet" type="text/css" href="/modules/home/css/header.css">
-		<link href="favicon.ico" rel="shortcut icon">
+		<link href="/favicon.ico" rel="shortcut icon">
 	</head>
 	<body class="nobg">
 		@yield('header')

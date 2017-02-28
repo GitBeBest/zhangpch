@@ -24,9 +24,8 @@ class ArticleService
     }
 
     public function getPublishLists($page) {
-        $count = Article::where('status', 1)->count();
-        $data = Article::where('status', 1)->skip($page-1)->take(15)->get();
-        return [ 'total' => $count, 'article' => $data];
+        $data = Article::with('category')->where('status', 1)->paginate(15);
+        return $data;
     }
 
     public function getStoreLists() {

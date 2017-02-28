@@ -18,11 +18,12 @@ class ArticleController extends Controller {
     /**
      * 不同分类
      * @param $id
+     * @param $page
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-	public function cate($id){
-	    $data = Article::where('category', $id)->get();
-	    return view('home::category');
+	public function cate($id, $page = 1){
+	    $data = Article::where('category_id', $id)->paginate(15);
+	    return view('home::category', ['article' => $data, 'type' => $id]);
     }
 
     /***********************管理员页面******************************************/
@@ -38,8 +39,10 @@ class ArticleController extends Controller {
      * @return \Symfony\Component\HttpFoundation\Response|static
      */
     public function detail($id){
-        $data = Article::find($id);
-        return view('home::article', ['article' => $data]);
+        $model = Article::find($id);
+        $model->view_times += 1;
+        $model->save();
+        return view('home::article', ['article' => $model, 'type' => $model->category_id]);
     }
 
 
@@ -110,5 +113,35 @@ class ArticleController extends Controller {
         }
     }
 
-	
+    /**
+     * 文章点赞
+     * @return static
+     */
+	public function praise(){
+        $id = Input::get('id');
+        $model = Article::find($id);
+        if($model) {
+            $model->praise_times += 1;
+            $model->save();
+            return $this->JsonOutPut(['times' => $model->praise_times]);
+        }else{
+            return $this->JsonOutPut([], 'no', '文章未找到');
+        }
+    }
+
+    /**
+     * 文章鄙视一下
+     * @return static
+     */
+    public function hate() {
+        $id = Input::get('id');
+        $model = Article::find($id);
+        if($model) {
+            $model->hate_times += 1;
+            $model->save();
+            return $this->JsonOutPut(['times' => $model->hate_times]);
+        }else{
+            return $this->JsonOutPut([], 'no', '文章未找到');
+        }
+    }
 }

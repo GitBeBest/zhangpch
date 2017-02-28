@@ -8,4 +8,6 @@
         @include('home::index.article')
         @include('home::index.right')
     </div>
+    <script src="/modules/home/js/jquery-3.1.1.js"></script>
+    <script src="/modules/home/js/index.js"></script>
 @stop

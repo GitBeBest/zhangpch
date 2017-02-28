@@ -18,14 +18,14 @@
             </div>
             <nav class="bl-header-pc-nav">
                 <ul class="bl-header-cate">
-                    <li class="bl-header-cate-li nav-active"><a href="/">首页</a></li>
-                    <li class="bl-header-cate-li"><a href="/article/cate/1">Nginx</a></li>
-                    <li class="bl-header-cate-li"><a href="/article/cate/2">服务端</a></li>
-                    <li class="bl-header-cate-li"><a href="/article/cate/3">存储</a></li>
-                    <li class="bl-header-cate-li"><a href="/article/cate/4">前端</a></li>
-                    <li class="bl-header-cate-li"><a href="/article/cate/5">其他</a></li>
-                    <li class="bl-header-cate-li"><a href="/message">留言</a></li>
-                    <li class="bl-header-cate-li"><a href="/about">关于</a></li>
+                    <li class="bl-header-cate-li {{ isset($type)&& $type > 0 ? '' : 'nav-active' }}"><a href="/">首页</a></li>
+                    <li class="bl-header-cate-li {{ isset($type)&& $type == 1 ? 'nav-active' : ''  }}"><a href="/nginx">Nginx</a></li>
+                    <li class="bl-header-cate-li {{ isset($type)&& $type == 2 ? 'nav-active' : ''  }}"><a href="/server">服务端</a></li>
+                    <li class="bl-header-cate-li {{ isset($type)&& $type == 3 ? 'nav-active' : ''  }}"><a href="/cache">存储</a></li>
+                    <li class="bl-header-cate-li {{ isset($type)&& $type == 4 ? 'nav-active' : ''  }}"><a href="/front">前端</a></li>
+                    <li class="bl-header-cate-li {{ isset($type)&& $type == 5 ? 'nav-active' : ''  }}"><a href="/other">其他</a></li>
+                    <li class="bl-header-cate-li {{ isset($type)&& $type == 99 ? 'nav-active' : ''  }}"><a href="/message">留言</a></li>
+                    <li class="bl-header-cate-li {{ isset($type)&& $type == 100 ? 'nav-active' : ''  }}"><a href="/about">关于</a></li>
                 </ul>
             </nav>
         </div>

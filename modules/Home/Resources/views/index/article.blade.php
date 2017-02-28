@@ -46,7 +46,7 @@
                             <li>
                                 <a title="查看分类">
                                     <i class="fa fa-th-list" aria-hidden="true"></i>
-                                    {{ $item->category }}
+                                    {{ isset($item->category) ? $item->category->title : '未分类' }}
                                 </a>
                             </li>
                         </ul>
@@ -57,15 +57,32 @@
     </div>
     <div class="article-page">
         <ul>
-            <li class="first-page">首页</li>
-            <li class="pre-page">上一页</li>
-            <li class="num current">1</li>
-            <li class="num">2</li>
-            <li class="num">3</li>
-            <li class="num">4</li>
-            <li class="next-page">下一页</li>
-            <li class="end-page">尾页</li>
-            <li class="total">共26条记录</li>
+            <li class="first-page"><a href="?page=1">首页</a></li>
+            <li class="pre-page">
+                @if($article->currentPage() == 1)
+                    上一页
+                @else
+                    <a href="?page={{ $article->currentPage()-1 }}">上一页</a>
+                @endif
+            </li>
+            @for($i=1;$i < $article->total()/$article->perPage() + 1; $i++)
+                @if($i == $article->currentPage())
+                    <li class="num current"><a href="?page={{ $i }}">{{ $i }}</a></li>
+                @else
+                    <li class="num"><a href="?page={{$i}}">{{ $i }}</a></li>
+                @endif
+            @endfor
+            <li class="next-page">
+                @if($article->currentPage() == $article->lastPage())
+                    下一页
+                @else
+                    <a href="?page={{ $article->currentPage()+1 }}">下一页</a>
+                @endif
+            </li>
+            <li class="end-page">
+                <a href="?page={{ $article->lastPage() }}">尾页</a>
+            </li>
+            <li class="total">共{{ $article->total() }}条记录</li>
         </ul>
     </div>
 </div>
