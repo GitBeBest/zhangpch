@@ -1,22 +1,35 @@
 <?php namespace Modules\Wechat\Http\Controllers;
 
+use App\Http\Requests\Request;
 use Illuminate\Support\Facades\Input;
 use Mockery\Exception;
+use Modules\Wechat\Http\Requests\UserService;
 use Pingpong\Modules\Routing\Controller;
 
 class WechatController extends Controller {
 	
 	public function index()
 	{
-		$echoStr = $_GET["echostr"];
 		if($this->checkSignature()) {
+            $echoStr = $_GET["echostr"];
 			echo $echoStr;
 			exit;
 		} else {
 			exit;
 		}
-		//return view('wechat::index');
 	}
+
+	public function oauth() {
+	    $open_id = session('wx.program.openid');
+	    $service = new UserService();
+	    $user = $service->getUserByOpenId($open_id);
+	    if($user) {
+	        echo $user->nickname. '你好';
+        }else{
+	        echo '未获取到信息';
+        }
+        exit;
+    }
 
 	private function checkSignature()
 	{

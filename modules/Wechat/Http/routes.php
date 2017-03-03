@@ -1,9 +1,10 @@
 <?php
 //'middleware' => 'App\Http\Middleware\Authenticate',
-Route::group(['prefix' => 'wechat', 'namespace' => 'Modules\Wechat\Http\Controllers'], function()
+Route::group(['prefix' => 'wechat', 'middleware' => 'oauth', 'namespace' => 'Modules\Wechat\Http\Controllers'], function()
 {
-	Route::get('index', 'WechatController@index');
+	Route::get('/index', 'WechatController@index');
 	Route::post('getMessage', 'WechatController@getMessage');
+	Route::get('/oauth', 'WechatController@oauth');
 });
 
 
