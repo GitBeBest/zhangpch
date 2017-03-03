@@ -46,14 +46,16 @@ class UserService
     }
 
     public function saveAuthToken($values){
-        $token_entity = new OauthToken();
+        $token_entity = OauthToken::where('user_id', $values['user_id'])->first();
+        if(!$token_entity) {
+            $token_entity = new OauthToken();
+        }
         $fill_attr = $token_entity->getFillable();
         foreach ($fill_attr as $attr) {
             if (isset($values[$attr])) {
                 $token_entity->{$attr} = $values[$attr];
             }
         }
-
         $token_entity->save();
     }
 }
