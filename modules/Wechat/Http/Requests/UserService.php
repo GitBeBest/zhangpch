@@ -19,18 +19,18 @@ class UserService
      * @param $user_ifo
      * @return User
      */
-    public function getUserByUserInfo($user_ifo) {
+    public function saveUserInfo($user_ifo) {
         $user = User::where('openid', $user_ifo['openid'])->first();
         if(empty($user)) {
             $user = new User();
-            $fill_attr = $user->getFillable();
-            foreach ($fill_attr as $attr) {
-                if (isset($user_ifo[$attr])) {
-                    $user->{$attr} = $user_ifo[$attr];
-                }
-            }
-            $user->save();
         }
+        $fill_attr = $user->getFillable();
+        foreach ($fill_attr as $attr) {
+            if (isset($user_ifo[$attr])) {
+                $user->{$attr} = $user_ifo[$attr];
+            }
+        }
+        $user->save();
 
         return $user;
     }
@@ -47,7 +47,7 @@ class UserService
 
     public function saveAuthToken($values){
         $token_entity = OauthToken::where('user_id', $values['user_id'])->first();
-        if(!$token_entity) {
+        if(empty($token_entity)) {
             $token_entity = new OauthToken();
         }
         $fill_attr = $token_entity->getFillable();

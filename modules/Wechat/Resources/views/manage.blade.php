@@ -1,0 +1,1 @@
+@extends('wechat::layouts.master')

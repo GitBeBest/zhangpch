@@ -68,6 +68,13 @@ class WechatController extends Controller {
         exit;
     }
 
+    /**
+     * 管理
+     */
+	public function manage() {
+		return view("wechat::manage");
+	}
+
 	private function checkSignature()
 	{
 		$signature = $_GET["signature"];

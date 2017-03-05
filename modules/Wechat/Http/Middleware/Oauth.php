@@ -27,9 +27,12 @@ class Oauth
                 $result = $util->getOpenId($request->input('code'));
                 //根据code，如果能够获取到openid
                 if(isset($result['openid'])) {
-                    $user_info = $util->getUserInfo($result['openid'], $result['access_token']);
                     $user_service = new UserService();
-                    $user = $user_service->getUserByUserInfo($user_info);
+                    $user = $user_service->getUserByOpenId($result['openid']);
+                    if(empty($user->nickname)){
+                        $user_info = $util->getUserInfo($result['openid'], $result['access_token']);
+                        $user_service->saveUserInfo($user_info);
+                    }
                     $result['user_id'] = $user->id;
                     $user_service->saveAuthToken($result);
                     session(['wx.program.openid' => $result['openid']]);

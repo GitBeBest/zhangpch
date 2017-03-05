@@ -1,5 +1,7 @@
 <?php
 namespace Modules\Wechat\Http\Requests;
+use Illuminate\Http\Request;
+
 /**
  * Created by PhpStorm.
  * User: zpc
@@ -38,12 +40,13 @@ class WechatUtil
      * @param string $scope
      * @param int $state
      */
-    public function getOauthCode($redirect_url, $scope = 'snsapi_base', $state=0) {
+    public function getOauthCode($redirect_url, $scope = 'snsapi_base', $state=1234) {
         $api_url = WechatApi::OAUTH_HOST . WechatApi::OAUTH_CODE;
         $patterns = ['/appid=@/', '/redirect_uri=@/', '/scope=@/', '/state=@/'];
         $fills = ['appid='.$this->config['appID'], 'redirect_uri='.$redirect_url, 'scope='.$scope, 'state='.$state];
         $out = preg_replace($patterns, $fills,  $api_url);
         header('Location:'. $out);
+        exit;
     }
 
     /**
