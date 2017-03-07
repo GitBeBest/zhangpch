@@ -1,19 +1,18 @@
-<div class="weui-tab">
-    <div class="weui-navbar">
-        <div class="weui-navbar__item weui-bar__item_on" content_id="media-manage">
-            素材管理
+<div class="wechat-header">
+    <div class="weui-tab">
+        <div class="weui-navbar">
+            <a href="#media-manage" class="weui-navbar__item">
+                素材管理
+            </a>
+            <a href="#user-manage" class="weui-navbar__item">
+                用户管理
+            </a>
+            <a href="#menu-manage" class="weui-navbar__item">
+                菜单管理
+            </a>
+            <a href="#account-manage" class="weui-navbar__item">
+                账号管理
+            </a>
         </div>
-        <div class="weui-navbar__item" content_id="user-manage">
-            用户管理
-        </div>
-        <div class="weui-navbar__item" content_id="menu-manage">
-            菜单管理
-        </div>
-        <div class="weui-navbar__item" content_id="account-manage">
-            账号管理
-        </div>
-    </div>
-    <div class="weui-tab__panel">
-
     </div>
 </div>
