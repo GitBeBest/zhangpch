@@ -1,11 +1,9 @@
 <?php namespace Modules\Wechat\Http\Controllers;
 
-use App\Http\Requests\Request;
 use Illuminate\Support\Facades\Input;
 use Mockery\Exception;
 use Modules\Wechat\Http\Requests\UserService;
 use Modules\Wechat\Http\Requests\WechatUtil;
-use PhpParser\Serializer\XML;
 use Pingpong\Modules\Routing\Controller;
 
 class WechatController extends Controller {
@@ -57,6 +55,20 @@ class WechatController extends Controller {
         return view($view, ['message' => $message]);
 	}
 
+    /**
+     * 更新access_token
+     */
+	public function updateAT() {
+        $util = new WechatUtil();
+        $result = $util->updateAccessToken();
+        if ($result) {
+            return ['status' => 'ok', 'errMsg' => '更新成功！'];
+        }
+
+        return ['status' => 'no', 'errMsg' => '更新失败！'];
+
+    }
+
 	public function oauth() {
 	    $open_id = session('wx.program.openid');
 	    $service = new UserService();
@@ -67,6 +79,33 @@ class WechatController extends Controller {
 	        echo '未获取到信息';
         }
         exit;
+    }
+
+    /**
+     * 获取微信js配置
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function getSignPackage() {
+        $url = \Request::input('url'); //当前网页url
+        $config = \Config::get('wechat');
+        $timestamp = time();
+	    $data = [
+	        'appId' => $config['appID'], //公众号唯一标示
+            'timestamp' => $timestamp, //签名时间戳
+            'nonceStr' => '', //签名随即串
+            'signature' => '', //签名
+            'jsApiList' => []
+        ];
+	    $service = new UserService();
+	    $data['nonceStr'] = $service->generateNonce(8);
+	    $util = new WechatUtil();
+	    $ticket = $util->getJsTicket();
+	    $sign_str = 'jsapi_ticket='.$ticket. '&noncestr='. $data['nonceStr']. '&timestamp='.$timestamp.'&url='.$url;
+	    $sign_str = sha1($sign_str);
+	    $data['signature'] = $sign_str;
+	    $data['jsApiList'] = $config['validJsApi'];
+	    return response()->json($data);
+
     }
 
     /**
@@ -117,67 +156,6 @@ class WechatController extends Controller {
 
 		file_put_contents('/tmp/wechat/msg', 'msgid:'.$msgType.' content:'.$content);
 	}
-
-    /**
-     * 获取自定义菜单
-     */
-	public function getMenu() {
-        $util = new WechatUtil();
-        $data = $util->getMenu();
-        return response()->json($data);
-    }
-
-    /**
-     * 添加自定义菜单
-     * @return \Illuminate\Http\JsonResponse
-     */
-    public function addMenu() {
-        $menu = [
-            'button' => [
-                [
-                    'type' => 'pic_sysphoto',
-                    'name' => '拍照',
-                    'key' => 'zpc_menu_photo_V1'
-                ],
-                [
-                    'name' => '一级菜单',
-                    'sub_button' => [
-                        [
-                            'type' => 'view',
-                            'name' => '欢迎',
-                            'url' => 'http://www.gengdada.com/wechat/oauth'
-                        ],
-                        [
-                            'type' => 'location_select',
-                            'name' => '位置',
-                            'key' => 'zpc_menu_location_V1'
-                        ],
-                        [
-                            'type' => 'view',
-                            'name' => '我的二维码',
-                            'url' => 'http://www.gengdada.com/wechat/account_qr_code'
-                        ]
-                    ]
-                ]
-            ]
-        ];
-
-        $util = new WechatUtil();
-        $result = $util->addMenu(json_encode($menu, JSON_UNESCAPED_UNICODE));
-        $message = $result ? '添加成功!' : '添加失败!';
-        return response()->json(['result'=> $message]);
-    }
-
-    /**
-     * 删除自定义菜单
-     * @return \Illuminate\Http\JsonResponse
-     */
-    public function delMenu() {
-        $util = new WechatUtil();
-        $result = $util->delMenu();
-        $message = $result ? '删除成功!' : '删除失败!';
-        return response()->json(['result'=> $message]);
-    }
 
     /**
      * 生成二维码

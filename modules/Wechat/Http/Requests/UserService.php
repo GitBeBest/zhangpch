@@ -58,4 +58,9 @@ class UserService
         }
         $token_entity->save();
     }
+
+    public function generateNonce($chars = 8) {
+        $letters = 'abcefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890';
+        return substr(str_shuffle($letters), 0, $chars);
+    }
 }

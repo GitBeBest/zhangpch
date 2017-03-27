@@ -4,6 +4,7 @@ Route::group(['prefix' => 'wechat', 'middleware' => 'oauth', 'namespace' => 'Mod
 {
 	Route::get('/oauth', 'WechatController@oauth');
     Route::get('/code', 'WechatController@code');
+    Route::get('/account_qr_code', 'WechatController@accountQrCode');
 });
 Route::group(['prefix' => 'wechat', 'namespace' => 'Modules\Wechat\Http\Controllers'], function()
 {
@@ -13,7 +14,7 @@ Route::group(['prefix' => 'wechat', 'namespace' => 'Modules\Wechat\Http\Controll
     Route::get('/get_menu', 'WechatController@getMenu');
     Route::get('/add_menu', 'WechatController@addMenu');
     Route::get('/del_menu', 'WechatController@delMenu');
-    Route::get('/account_qr_code', 'WechatController@accountQrCode');
+    Route::post('/sign_package', 'WechatController@getSignPackage');
 });
 
 Route::get('wechat/login', 'Modules\Wechat\Http\Controllers\LoginController@login');

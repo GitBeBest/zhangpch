@@ -63,6 +63,26 @@ class WechatUtil
     }
 
     /**
+     * curl 上传文件
+     * @param $url
+     * @param $path
+     * @param $file_type
+     * @return mixed
+     */
+    public function curlUpload($url, $path) {
+        $curlPost = array('file' => '@' . realpath($path));
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($ch, CURLOPT_POST, 1); //POST提交
+        curl_setopt($ch, CURLOPT_TIMEOUT,10);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $curlPost);
+        $result = curl_exec($ch);
+        curl_close($ch);
+        return json_decode($result, true);
+    }
+
+    /**
      * 微信api请求access_token
      * @return mixed
      */
@@ -73,6 +93,55 @@ class WechatUtil
         $wx_url = preg_replace($patterns, $fills,  $api_url);
         $data = $this->curlGet($wx_url);
         return $data;
+    }
+
+    /**
+     * 微型请求获取Jsticket
+     * @return mixed
+     */
+    private function apiForJsTicket() {
+        $api_url = WechatApi::API_HOST.WechatApi::API_GET_JS_TICKET;
+        $access_token = $this->getAccessToken();
+        $patterns = ['/access_token=@/'];
+        $fills = ['access_token='.$access_token];
+        $wx_url = preg_replace($patterns, $fills,  $api_url);
+        $data = $this->curlGet($wx_url);
+        return $data;
+    }
+
+    /**
+     * 获取jsapiticket
+     * @return string
+     */
+    public function getJsTicket() {
+        $js_ticket = '';
+        $model = AccessToken::where(['appid' => $this->config['appID']])->first();
+        if(empty($model)) {
+            //请求接口获取
+            $model = new AccessToken();
+            $data = $this->apiForJsTicket();
+            if(isset($data['ticket'])) {
+                $js_ticket = $data['ticket'];
+                $model->dev_id = $this->config['devID'];
+                $model->appid = $this->config['appID'];
+                $model->jsapi_ticket = $data['ticket'];
+                $model->expires_in = $data['expires_in'];
+                $model->save();
+            }
+        }else{
+            if(empty($model->jsapi_ticket)) {
+                $data = $this->apiForJsTicket();
+                if(isset($data['ticket'])) {
+                    $js_ticket = $data['ticket'];
+                    $model->jsapi_ticket = $data['ticket'];
+                    $model->save();
+                }
+            }else{
+                $js_ticket = $model->jsapi_ticket;
+            }
+        }
+
+        return $js_ticket;
     }
 
     /**
@@ -110,6 +179,24 @@ class WechatUtil
 
         return $access_token;
     }
+
+    /**
+     * 更新access_token(应该2小时更新一次)
+     * @return bool
+     */
+    public function updateAccessToken() {
+        $model = AccessToken::where(['appid' => $this->config['appID']])->first();
+        if ($model) {
+            $data = $this->apiForAccessToken();
+            if(isset($data['access_token'])) {
+                $model->access_token = $data['access_token'];
+                $model->save();
+                return true;
+            }
+        }
+        return false;
+    }
+
 
     /**
      * 获取code

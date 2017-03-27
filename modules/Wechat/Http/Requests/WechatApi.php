@@ -18,6 +18,9 @@ class WechatApi
     //获取access_token GET
     const API_ACCESS_TOKEN = '/cgi-bin/token?grant_type=client_credential&appid=@&secret=@';
 
+    //获取jsapi_ticket
+    const API_GET_JS_TICKET = '/cgi-bin/ticket/getticket?access_token=@&type=jsapi';
+
     //获取微信服务器IP地址 GET
     const API_IP_LIST = '/cgi-bin/getcallbackip?access_token=@';
 
@@ -47,25 +50,6 @@ class WechatApi
 
     //获取公众号的菜单配置
     const API_MENU_MENU_INFO = '/cgi-bin/get_current_selfmenu_info?access_token=@';
-
-    //添加客服帐号 POST
-    const API_KF_ACCOUNT_ADD = '/customservice/kfaccount/add?access_token=@';
-
-    //修改客服帐号 POST
-    const API_KF_ACCOUNT_UPDATE = '/customservice/kfaccount/update?access_token=@';
-
-    //删除客服帐号 GET
-    const API_KF_ACCOUNT_DEL = '/customservice/kfaccount/del?access_token=@';
-
-    //设置客服帐号头像 POST/FORM
-    const API_KF_ACCOUNT_PIC = '/customservice/kfaccount/uploadheadimg?access_token=@&kf_account=@';
-
-    //获取所有客服帐号
-    const API_KF_ACCOUNT_LIST = '/cgi-bin/customservice/getkflist?access_token=@';
-
-    //客服接口-发送消息
-    const API_KF_SEND_MESSAGE = '/cgi-bin/message/custom/send?access_token=@';
-
 
     //用户同意授权，获取code
     const OAUTH_CODE = '/connect/oauth2/authorize?appid=@&redirect_uri=@&response_type=code&scope=@&state=@#wechat_redirect';
@@ -194,5 +178,54 @@ class WechatApi
     //长链接转短链接接口
     const API_SHORT_URL = '/cgi-bin/shorturl?access_token=@';
     //微信认证事件推送
+
+    /************************************数据统计***************************************/
+    /**
+     * 用户分析数据接口 POST
+     * {"begin_date": "2014-12-02","end_date": "2014-12-07"}
+     */
+    const API_USER_SUMMARY = '/datacube/getusersummary?access_token=@';
+
+    /**
+     * 累计用户数据 POST
+     * {"begin_date": "2014-12-02","end_date": "2014-12-07"}
+     */
+    const API_USER_CUMULATE = '/datacube/getusercumulate?access_token=@';
+
+    /**
+     * 图文群发每日数据(1天) POST
+     */
+    const API_ARTICLE_SUMMARY = '/datacube/getarticlesummary?access_token=@';
+
+    /**
+     * 图文群发总数据(1天) POST
+     */
+    const API_ARTICLE_TOTAL = '/datacube/getarticletotal?access_token=@';
+
+    /**
+     * 获取图文统计数据(3天) POST
+     */
+    const API_USER_READ = '/datacube/getuserread?access_token=@';
+
+    /**
+     * 获取图文统计分时数据(1天) POST
+     */
+    const API_USER_READ_HOUR = '/datacube/getuserreadhour?access_token=@';
+
+    /**
+     * 获取图文分享转发数据(7天) POST
+     */
+    const API_USER_SHARE = '/datacube/getusershare?access_token=@';
+
+    /**
+     * 获取图文分享转发分时数据(1天)
+     */
+    const API_USER_SHARE_HOUR = '/datacube/getusersharehour?access_token=@';
+
+    /**
+     * 消息分析数据接口
+     */
+
+    //接口分析数据接口
 
 }
